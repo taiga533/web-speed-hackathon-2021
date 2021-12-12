@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import { Animator, Decoder } from 'gifler';
 import { GifReader } from 'omggif';
 import React from 'react';
-
+import SvgPause from "../../../../assets/icons/font-awesome/solid/pause.svg";
+import SvgPlay from "../../../../assets/icons/font-awesome/solid/play.svg";
 import { useFetch } from '../../../hooks/use_fetch';
 import { fetchBinary } from '../../../utils/fetchers';
 import { AspectRatioBox } from '../AspectRatioBox';
@@ -81,7 +82,7 @@ const PausableMovie = ({ src }) => {
             },
           )}
         >
-          <FontAwesomeIcon iconType={isPlaying ? 'pause' : 'play'} styleType="solid" />
+          <FontAwesomeIcon IconSvg={isPlaying ? SvgPause : SvgPlay} />
         </div>
       </button>
     </AspectRatioBox>
@@ -89,3 +90,4 @@ const PausableMovie = ({ src }) => {
 };
 
 export { PausableMovie };
+

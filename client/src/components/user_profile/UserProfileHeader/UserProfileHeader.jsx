@@ -1,7 +1,7 @@
 import FastAverageColor from 'fast-average-color';
 import moment from 'moment';
 import React from 'react';
-
+import SvgCalendarAlt from "../../../../assets/icons/font-awesome/regular/calendar-alt.svg";
 import { getProfileImagePath } from '../../../utils/get_path';
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
@@ -35,7 +35,7 @@ const UserProfileHeader = ({ user }) => {
         <p className="pt-2">{user.description}</p>
         <p className="pt-2 text-gray-600 text-sm">
           <span className="pr-1">
-            <FontAwesomeIcon iconType="calendar-alt" styleType="regular" />
+            <FontAwesomeIcon IconSvg={SvgCalendarAlt} />
           </span>
           <span>
             <time dateTime={moment(user.createdAt).toISOString()}>
@@ -50,3 +50,4 @@ const UserProfileHeader = ({ user }) => {
 };
 
 export { UserProfileHeader };
+

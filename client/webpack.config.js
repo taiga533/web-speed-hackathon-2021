@@ -40,6 +40,11 @@ const config = {
         use: [{ loader: 'babel-loader' }],
       },
       {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
+      {
         test: /\.css$/i,
         use: [
           { loader: MiniCssExtractPlugin.loader },

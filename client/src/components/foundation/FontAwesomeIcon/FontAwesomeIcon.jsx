@@ -2,17 +2,15 @@ import React from 'react';
 
 /**
  * @typedef {object} Props
- * @property {string} iconType
- * @property {'solid' | 'regular'} styleType
+ * @property {React.Element} IconSvg
  */
 
 /** @type {React.VFC<Props>} */
-const FontAwesomeIcon = ({ iconType, styleType }) => {
+const FontAwesomeIcon = ({ IconSvg }) => {
   return (
-    <svg className="font-awesome inline-block leading-none fill-current">
-      <use xlinkHref={`/sprites/font-awesome/${styleType}.svg#${iconType}`} />
-    </svg>
+    <IconSvg className="font-awesome inline-block leading-none fill-current" />
   );
 };
 
 export { FontAwesomeIcon };
+

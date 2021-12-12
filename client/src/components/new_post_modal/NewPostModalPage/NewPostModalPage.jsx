@@ -1,9 +1,12 @@
 import React from 'react';
-
+import SvgImages from "../../../../assets/icons/font-awesome/solid/images.svg";
+import SvgMusic from "../../../../assets/icons/font-awesome/solid/music.svg";
+import SvgVideo from "../../../../assets/icons/font-awesome/solid/video.svg";
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 import { ModalErrorMessage } from '../../modal/ModalErrorMessage';
 import { ModalSubmitButton } from '../../modal/ModalSubmitButton';
 import { AttachFileInputButton } from '../AttachFileInputButton';
+
 
 const MAX_UPLOAD_BYTES_LIMIT = 10 * 1024 * 1024;
 
@@ -109,19 +112,19 @@ const NewPostModalPage = ({ hasError, isLoading, onResetError, onSubmit }) => {
           <AttachFileInputButton
             accept="image/*"
             active={params.images.length !== 0}
-            icon={<FontAwesomeIcon iconType="images" styleType="solid" />}
+            icon={<FontAwesomeIcon IconSvg={SvgImages} />}
             onChange={handleChangeImages}
           />
           <AttachFileInputButton
             accept="audio/*"
             active={params.sound !== undefined}
-            icon={<FontAwesomeIcon iconType="music" styleType="solid" />}
+            icon={<FontAwesomeIcon IconSvg={SvgMusic} />}
             onChange={handleChangeSound}
           />
           <AttachFileInputButton
             accept="video/*"
             active={params.movie !== undefined}
-            icon={<FontAwesomeIcon iconType="video" styleType="solid" />}
+            icon={<FontAwesomeIcon IconSvg={SvgVideo} />}
             onChange={handleChangeMovie}
           />
         </p>
@@ -141,3 +144,4 @@ const NewPostModalPage = ({ hasError, isLoading, onResetError, onSubmit }) => {
 };
 
 export { NewPostModalPage };
+
