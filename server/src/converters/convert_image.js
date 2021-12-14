@@ -1,4 +1,5 @@
 import sharp from 'sharp';
+import { IMAGE_EXTENSION, IMAGE_FIT_STRATEGY, IMAGE_SIZE } from '../image_const';
 
 /**
  * @param {Buffer} buffer
@@ -11,11 +12,11 @@ import sharp from 'sharp';
 async function convertImage(buffer, options) {
   return sharp(buffer)
     .resize({
-      fit: 'cover',
-      height: options.height,
-      width: options.width,
+      fit: IMAGE_FIT_STRATEGY,
+      height: options.height ?? IMAGE_SIZE.height,
+      width: options.width ?? IMAGE_SIZE.width,
     })
-    .toFormat(options.extension ?? 'jpeg')
+    .toFormat(options.extension ?? IMAGE_EXTENSION)
     .toBuffer();
 }
 
