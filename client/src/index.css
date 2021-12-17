@@ -4,7 +4,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './styles/webfont.css';
+/*!
+ * These WOFF/WOFF2 files are provided under the SIL Open Font License version 1.1
+ * For more details, see WOFF extended metadata or https://opensource.org/licenses/OFL-1.1
+ */
+@import './styles/font/subset/normal.css';
+@import './styles/font/subset/bold.css';
 
 body {
   font-family: '源暎エムゴ', sans-serif;
