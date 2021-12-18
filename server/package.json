@@ -10,7 +10,7 @@
     "start": "babel-node --experimental-wasm-threads src/index.js",
     "prestart:clean": "rimraf ../upload",
     "prestart:init": "mkdirp ../upload/images ../upload/movies ../upload/sounds",
-    "resize": "babel-node ./src/image_resizer.js"
+    "convert:image": "babel-node ./src/convert_all_image.js"
   },
   "dependencies": {
     "@babel/core": "7.16.0",
