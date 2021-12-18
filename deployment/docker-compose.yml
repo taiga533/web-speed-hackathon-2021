@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./nginx
+    ports:
+      - 8888:443
+    volumes:
+      - ./../dist:/var/www/dist
+      - ./../upload:/var/www/upload
+      - ./../public:/var/www/public
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
