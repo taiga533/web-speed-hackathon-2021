@@ -2,12 +2,20 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
+
+/**
+ * @type {"production" | "development"}
+ */
+const environment = process.env.NODE_ENV || 'development';
 
 /** @type {import('webpack').Configuration} */
 const config = {
@@ -20,24 +28,29 @@ const config = {
     },
     static: [PUBLIC_PATH, UPLOAD_PATH],
   },
-  devtool: 'inline-source-map',
+  devtool: environment === 'production' ? 'source-map' : 'inline-source-map',
   entry: {
     main: [
-      'core-js',
       'regenerator-runtime/runtime',
-      'jquery-binarytransport',
       path.resolve(SRC_PATH, './index.css'),
       path.resolve(SRC_PATH, './buildinfo.js'),
       path.resolve(SRC_PATH, './index.jsx'),
     ],
   },
-  mode: 'none',
+  mode: environment,
   module: {
     rules: [
       {
         exclude: /node_modules/,
         test: /\.jsx?$/,
-        use: [{ loader: 'babel-loader' }],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/i,
@@ -57,26 +70,31 @@ const config = {
   output: {
     filename: 'scripts/[name].js',
     path: DIST_PATH,
+    publicPath: '/',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+    minimizer: ['...', new CssMinimizerPlugin()],
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      AudioContext: ['standardized-audio-context', 'AudioContext'],
       Buffer: ['buffer', 'Buffer'],
-      'window.jQuery': 'jquery',
     }),
     new webpack.EnvironmentPlugin({
       BUILD_DATE: new Date().toISOString(),
       // Heroku では SOURCE_VERSION 環境変数から commit hash を参照できます
       COMMIT_HASH: process.env.SOURCE_VERSION || '',
-      NODE_ENV: 'development',
+      NODE_ENV: environment,
     }),
+    new MomentLocalesPlugin({ localesToKeep: ['ja'] }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css',
     }),
     new HtmlWebpackPlugin({
-      inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
+      scriptLoading: 'defer',
     }),
   ],
   resolve: {
