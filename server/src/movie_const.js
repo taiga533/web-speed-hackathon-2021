@@ -1,0 +1,4 @@
+const MOVIE_FRAME_SIZE = 500;
+const MOVIE_EXTENSION = 'webm';
+
+export { MOVIE_FRAME_SIZE, MOVIE_EXTENSION };
