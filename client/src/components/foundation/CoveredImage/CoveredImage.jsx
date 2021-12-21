@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import sizeOf from 'image-size';
 import React from 'react';
-
 import { useFetch } from '../../../hooks/use_fetch';
 import { fetchBinary } from '../../../utils/fetchers';
+
 
 /**
  * @typedef {object} Props
@@ -50,6 +50,7 @@ const CoveredImage = ({ alt, src }) => {
           'w-auto h-full': containerRatio > imageRatio,
           'w-full h-auto': containerRatio <= imageRatio,
         })}
+        loading='lazy'
         src={blobUrl}
       />
     </div>
@@ -57,3 +58,4 @@ const CoveredImage = ({ alt, src }) => {
 };
 
 export { CoveredImage };
+
