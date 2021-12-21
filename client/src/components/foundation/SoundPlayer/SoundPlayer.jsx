@@ -6,7 +6,6 @@ import { fetchBinary } from '../../../utils/fetchers';
 import { getSoundPath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
-import { SoundWaveSVG } from '../SoundWaveSVG';
 
 
 /**
@@ -68,7 +67,7 @@ const SoundPlayer = ({ sound }) => {
           <AspectRatioBox aspectHeight={1} aspectWidth={10}>
             <div className="relative w-full h-full">
               <div className="absolute inset-0 w-full h-full">
-                <SoundWaveSVG soundData={data} />
+                <img src={`/svg/waves/${sound.id}.svg`} className="w-full h-full" loading='lazy' />
               </div>
               <div
                 className="absolute inset-0 w-full h-full bg-gray-300 opacity-75"
