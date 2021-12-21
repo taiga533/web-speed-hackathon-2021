@@ -5,13 +5,13 @@ import { AppPage } from '../../components/application/AppPage';
 import { useFetch } from '../../hooks/use_fetch';
 import { fetchJSON } from '../../utils/fetchers';
 
-const AuthModalContainer = React.lazy(() => import('../AuthModalContainer')) // ../AuthModalContainer';
-const NewPostModalContainer = React.lazy(() => import('../NewPostModalContainer')) //'../NewPostModalContainer';
-const NotFoundContainer = React.lazy(() => import('../NotFoundContainer')) // '../NotFoundContainer';
-const PostContainer = React.lazy(() => import('../PostContainer')) // '../PostContainer';
-const TermContainer = React.lazy(() => import('../TermContainer')) // '../TermContainer';
-const TimelineContainer = React.lazy(() => import('../TimelineContainer')) // '../TimelineContainer';
-const UserProfileContainer = React.lazy(() => import('../UserProfileContainer')) // '../UserProfileContainer';
+const AuthModalContainer = React.lazy(() => import(/* webpackChunkName: "Auth" */ '../AuthModalContainer')) // ../AuthModalContainer';
+const NewPostModalContainer = React.lazy(() => import(/* webpackChunkName: "NewPost" */ '../NewPostModalContainer')) //'../NewPostModalContainer';
+const NotFoundContainer = React.lazy(() => import(/* webpackChunkName: "NotFound" */ '../NotFoundContainer')) // '../NotFoundContainer';
+const PostContainer = React.lazy(() => import(/* webpackChunkName: "Post" */ '../PostContainer')) // '../PostContainer';
+const TermContainer = React.lazy(() => import(/* webpackChunkName: "Term" */ '../TermContainer')) // '../TermContainer';
+const TimelineContainer = React.lazy(() => import(/* webpackChunkName: "Timeline" */ '../TimelineContainer')) // '../TimelineContainer';
+const UserProfileContainer = React.lazy(() => import(/* webpackChunkName: "UserProfile" */ '../UserProfileContainer')) // '../UserProfileContainer';
 
 /** @type {React.VFC} */
 const AppContainer = () => {
@@ -30,17 +30,14 @@ const AppContainer = () => {
   const handleRequestOpenAuthModal = React.useCallback(() => setModalType('auth'), []);
   const handleRequestOpenPostModal = React.useCallback(() => setModalType('post'), []);
   const handleRequestCloseModal = React.useCallback(() => setModalType('none'), []);
-
-  if (isLoading) {
-    return (
+  
+  return (
+    <>
+    {isLoading ? (
       <Helmet>
         <title>読込中 - CAwitter</title>
       </Helmet>
-    );
-  }
-
-  return (
-    <>
+    ) : null}
       <AppPage
         activeUser={activeUser}
         onRequestOpenAuthModal={handleRequestOpenAuthModal}
