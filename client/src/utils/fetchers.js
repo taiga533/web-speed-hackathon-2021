@@ -12,10 +12,13 @@ async function fetchBinary(url) {
 /**
  * @template T
  * @param {string} url
+ * @param {object} params
  * @returns {Promise<T>}
  */
-async function fetchJSON(url) {
-  const result = await fetch(url);
+async function fetchJSON(url, params = undefined) {
+  const queryParams = new URLSearchParams(params);
+
+  const result = await fetch(`${url}${queryParams === undefined ? '' : '?' + queryParams}`);
   return result.json();
 }
 
