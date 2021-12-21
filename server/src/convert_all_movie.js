@@ -10,7 +10,7 @@ const moviesPath = path.join(PUBLIC_PATH, '/movies');
 async function convertAllMovie() {
   const moviePaths = getFiles(moviesPath);
   moviePaths
-    .filter((path) => path.match(/.gif$/))
+    .filter((path) => path.match(/\.gif$/))
     .reduce((promise, path) => {
       return promise.then(async () => {
         const movieBuffer = await fs.promises.readFile(path);
