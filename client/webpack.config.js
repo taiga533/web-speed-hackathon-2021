@@ -10,7 +10,7 @@ const webpack = require('webpack');
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
-const DIST_PATH = path.resolve(__dirname, '../dist');
+const DIST_PATH = path.resolve(__dirname, './dist');
 
 /**
  * @type {"production" | "development"}
