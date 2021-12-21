@@ -3,6 +3,7 @@ import path from 'path';
 
 /**
  * ファイル一覧を取得する
+ * @param {string} searchTargetPath
  * @param {boolean} [isRecursive=true]
  * @returns {Array<string>}
  */
