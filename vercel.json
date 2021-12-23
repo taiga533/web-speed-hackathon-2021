@@ -1,0 +1,8 @@
+{
+    "functions": {
+        "api/src/app.js": {
+            "maxDuration": 30
+        }
+    },
+    "rewrites": [{ "source": "/(.+)", "destination": "/api/src/app.js" }]
+}
