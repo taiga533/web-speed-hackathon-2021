@@ -1,1 +1,1 @@
-export { AuthModalContainer as default } from './AuthModalContainer';
+export { AuthModalContainer } from './AuthModalContainer';

@@ -1,1 +1,1 @@
-export { NewPostModalContainer as default } from './NewPostModalContainer';
+export { NewPostModalContainer } from './NewPostModalContainer';

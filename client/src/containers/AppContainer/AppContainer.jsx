@@ -4,9 +4,10 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { AppPage } from '../../components/application/AppPage';
 import { useFetch } from '../../hooks/use_fetch';
 import { fetchJSON } from '../../utils/fetchers';
+import { AuthModalContainer } from '../AuthModalContainer';
+import { NewPostModalContainer } from '../NewPostModalContainer';
 
-const AuthModalContainer = React.lazy(() => import(/* webpackChunkName: "Auth" */ '../AuthModalContainer')) // ../AuthModalContainer';
-const NewPostModalContainer = React.lazy(() => import(/* webpackChunkName: "NewPost" */ '../NewPostModalContainer')) //'../NewPostModalContainer';
+
 const NotFoundContainer = React.lazy(() => import(/* webpackChunkName: "NotFound" */ '../NotFoundContainer')) // '../NotFoundContainer';
 const PostContainer = React.lazy(() => import(/* webpackChunkName: "Post" */ '../PostContainer')) // '../PostContainer';
 const TermContainer = React.lazy(() => import(/* webpackChunkName: "Term" */ '../TermContainer')) // '../TermContainer';

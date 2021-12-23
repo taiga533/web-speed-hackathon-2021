@@ -19,6 +19,9 @@ async function fetchJSON(url, params = undefined) {
   const queryParams = new URLSearchParams(params);
 
   const result = await fetch(`${url}${queryParams === undefined ? '' : '?' + queryParams}`);
+  if (!result.ok) {
+    throw new Error(await result.json());
+  }
   return result.json();
 }
 
