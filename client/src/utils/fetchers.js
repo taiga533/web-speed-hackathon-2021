@@ -73,3 +73,4 @@ async function sendJSON(url, data) {
 }
 
 export { fetchBinary, fetchJSON, sendFile, sendJSON };
+

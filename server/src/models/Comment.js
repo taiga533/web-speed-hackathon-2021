@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize';
 import { ulid } from 'ulid';
-
 import { sequelize } from '../sequelize';
 
 /**
@@ -41,6 +40,7 @@ const Comment = sequelize.define(
           include: { association: 'profileImage' },
         },
       ],
+      order: [['id', 'ASC']],
     },
   },
 );

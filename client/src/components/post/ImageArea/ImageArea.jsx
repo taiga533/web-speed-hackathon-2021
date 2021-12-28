@@ -4,7 +4,6 @@ import { getImagePath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../../foundation/AspectRatioBox';
 import { CoveredImage } from '../../foundation/CoveredImage';
 
-
 /**
  * @typedef {object} Props
  * @property {Array<Models.Image>} images

@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize';
 import { ulid } from 'ulid';
-
 import { sequelize } from '../sequelize';
 
 /**
@@ -46,6 +45,10 @@ const Post = sequelize.define(
         },
         { association: 'movie' },
         { association: 'sound' },
+      ],
+      order: [
+        ['id', 'DESC'],
+        ['images', 'createdAt', 'ASC'],
       ],
     },
   },

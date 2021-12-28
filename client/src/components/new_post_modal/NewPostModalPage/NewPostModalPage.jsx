@@ -7,7 +7,6 @@ import { ModalErrorMessage } from '../../modal/ModalErrorMessage';
 import { ModalSubmitButton } from '../../modal/ModalSubmitButton';
 import { AttachFileInputButton } from '../AttachFileInputButton';
 
-
 const MAX_UPLOAD_BYTES_LIMIT = 10 * 1024 * 1024;
 
 /**

@@ -7,7 +7,6 @@ import { ImageArea } from '../../post/ImageArea';
 import { MovieArea } from '../../post/MovieArea';
 import { SoundArea } from '../../post/SoundArea';
 
-
 /**
  * @typedef {object} Props
  * @property {Models.Post} post
