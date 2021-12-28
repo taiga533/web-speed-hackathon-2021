@@ -13,4 +13,4 @@ RUN npm install
 
 
 WORKDIR /home/node/app/server
-CMD ["./node_modules/@babel/node/bin/babel-node.js", "src/index.js"]
+CMD ["--experimental-wasm-threads", "./node_modules/@babel/node/bin/babel-node.js", "src/index.js"]
