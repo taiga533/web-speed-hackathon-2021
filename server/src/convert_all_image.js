@@ -5,18 +5,18 @@ import { IMAGE_EXTENSION, LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from './image_con
 import { PUBLIC_PATH } from './paths';
 import { getFiles } from './utils/file_utils';
 
-const imagesPath = path.join(PUBLIC_PATH, '/images');
+const imagesPath = path.join(PUBLIC_PATH, '/images/profiles');
 
 async function convertAllImage() {
   const imagePaths = getFiles(imagesPath, false);
   await Promise.all(
     imagePaths
-      .filter((path) => path.match(/.webp$/))
+      .filter((path) => path.match(/.jpg$/))
       .map(async (imagePath) => {
         const largeImageBuffer = await convertImage(imagePath, 'large');
         saveConvertedFile(imagePath, largeImageBuffer, 'large');
-        const smallImageBuffer = await convertImage(imagePath, 'small');
-        saveConvertedFile(imagePath, smallImageBuffer, 'small');
+        // const smallImageBuffer = await convertImage(imagePath, 'small');
+        // saveConvertedFile(imagePath, smallImageBuffer, 'small');
       }),
   );
 }

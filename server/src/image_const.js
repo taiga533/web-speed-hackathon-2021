@@ -5,7 +5,7 @@ const SMALL_IMAGE_SIZE = {
   width: 300,
 };
 // const LARGE_IMAGE_SIZE = {
-//   width: 70,
+//   width: 128,
 // };
 // const SMALL_IMAGE_SIZE = {
 //   width: 50,
