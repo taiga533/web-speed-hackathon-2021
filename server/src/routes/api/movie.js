@@ -1,15 +1,11 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-
 import Router from 'express-promise-router';
+import { promises as fs } from 'fs';
 import httpErrors from 'http-errors';
+import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-
 import { convertMovie } from '../../converters/convert_movie';
 import { UPLOAD_PATH } from '../../paths';
-
-// 変換した動画の拡張子
-const EXTENSION = 'gif';
+import { MOVIE_EXTENSION, MOVIE_FRAME_SIZE } from './../../movie_const';
 
 const router = Router();
 
@@ -25,12 +21,12 @@ router.post('/movies', async (req, res) => {
 
   const converted = await convertMovie(req.body, {
     // 動画の拡張子を指定する
-    extension: EXTENSION,
+    extension: MOVIE_EXTENSION,
     // 動画の縦横サイズを指定する (undefined は元動画に合わせる)
-    size: undefined,
+    size: MOVIE_FRAME_SIZE,
   });
 
-  const filePath = path.resolve(UPLOAD_PATH, `./movies/${movieId}.${EXTENSION}`);
+  const filePath = path.resolve(UPLOAD_PATH, `./movies/${movieId}.${MOVIE_EXTENSION}`);
   await fs.writeFile(filePath, converted);
 
   return res.status(200).type('application/json').send({ id: movieId });
