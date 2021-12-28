@@ -11,6 +11,7 @@
     "prestart:clean": "rimraf ../upload",
     "prestart:init": "mkdirp ../upload/images ../upload/movies ../upload/sounds",
     "convert:image": "babel-node ./src/convert_all_image.js",
+    "modify:image:seeds": "babel-node ./src/modify_image_model_seeds.js",
     "convert:movie": "babel-node ./src/convert_all_movie.js",
     "generate:sound:wave": "babel-node ./src/generate_all_sound_wave_svg.js"
   },
@@ -29,6 +30,7 @@
     "express-session": "1.17.2",
     "http-errors": "1.8.1",
     "iconv-lite": "0.6.3",
+    "image-size": "^1.0.0",
     "jschardet": "3.0.0",
     "jsdom": "^19.0.0",
     "lodash": "^4.17.21",

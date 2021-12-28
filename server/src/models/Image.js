@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize } from 'sequelize';
-
 import { sequelize } from '../sequelize';
 
 /**
@@ -24,6 +23,10 @@ const Image = sequelize.define('Image', {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
     type: DataTypes.UUID,
+  },
+  imageRatio: {
+    allowNull: false,
+    type: DataTypes.FLOAT,
   },
 });
 
