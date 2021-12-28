@@ -7,7 +7,7 @@ services:
     ports:
       - 8888:443
     volumes:
-      - ./../dist:/var/www/dist
+      - ./../client/dist:/var/www/dist
       - ./../upload:/var/www/upload
       - ./../public:/var/www/public
     extra_hosts:
