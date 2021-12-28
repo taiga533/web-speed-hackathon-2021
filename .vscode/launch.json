@@ -14,6 +14,17 @@
             "sourceMapPathOverrides": {
                 "webpack://@web-speed-hackathon-2021/client/./*": "${webRoot}/*"
             }
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against production",
+            "url": "https://www.taiga553.ninja",
+            "webRoot": "${workspaceFolder}/client",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack://@web-speed-hackathon-2021/client/./*": "${webRoot}/*"
+            }
         }
     ]
 }
