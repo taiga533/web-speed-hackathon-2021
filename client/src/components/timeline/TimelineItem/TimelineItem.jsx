@@ -2,6 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getProfileImagePath } from '../../../utils/get_path';
+import { buildDefaultSrc } from '../../../utils/srcSet';
 import { ImageArea } from '../../post/ImageArea';
 import { MovieArea } from '../../post/MovieArea';
 import { SoundArea } from '../../post/SoundArea';
@@ -34,6 +35,7 @@ const isClickedAnchorOrButton = (target, currentTarget) => {
 /** @type {React.VFC<Props>} */
 const TimelineItem = ({ post }) => {
   const navigate = useNavigate();
+  const profileImagePath = getProfileImagePath(post.user.profileImage.id);
 
   /**
    * ボタンやリンク以外の箇所をクリックしたとき かつ 文字が選択されてないとき、投稿詳細ページに遷移する
@@ -57,7 +59,7 @@ const TimelineItem = ({ post }) => {
             className="block w-12 h-12 bg-gray-300 border border-gray-300 rounded-full hover:opacity-75 overflow-hidden sm:w-16 sm:h-16"
             to={`/users/${post.user.username}`}
           >
-            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} loading='lazy'/>
+            <img alt={post.user.profileImage.alt} src={buildDefaultSrc(profileImagePath)} loading='lazy'/>
           </Link>
         </div>
         <div className="flex-grow flex-shrink min-w-0">
