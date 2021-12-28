@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import { buildDefaultSrc, buildSrcSet } from '../../../utils/src_set';
 
 
 /**
@@ -16,7 +17,6 @@ const CoveredImage = ({ alt, src, imageRatio }) => {
 
   const [containerSize, setContainerSize] = React.useState({ height: 0, width: 0 });
   /** @type {React.RefCallback<HTMLDivElement>} */
-  console.log(imageRatio)
   const callbackRef = React.useCallback((el) => {
     setContainerSize({
       height: el?.clientHeight ?? 0,
@@ -28,15 +28,10 @@ const CoveredImage = ({ alt, src, imageRatio }) => {
 
   return (
     <div ref={callbackRef} className="relative w-full h-full overflow-hidden">
-      <picture
-        >
-        <source media="(max-width: 799px)" srcset={src.replace(/(\.[a-z]+)$/, "-small$1")}/>
-        <source media="(min-width: 800px)" srcset={src.replace(/(\.[a-z]+)$/, "-large$1")} />
         <img className={classNames('absolute left-1/2 top-1/2 max-w-none transform -translate-x-1/2 -translate-y-1/2', {
           'w-auto h-full': containerRatio > imageRatio,
           'w-full h-auto': containerRatio <= imageRatio,
-        })} src={src.replace(/(\.[a-z]+)$/, "-large$1")} alt={alt} />
-      </picture>
+        })} src={buildDefaultSrc(src)} srcSet={buildSrcSet(src)}/>
     </div>
   );
 };

@@ -28,15 +28,13 @@ async function convertAllImage() {
  * @returns {Promise<Buffer>}
  */
 async function convertImage(imagePath, sizeName) {
-  return (
-    sharp(imagePath)
-      .resize({
-        position: 'center',
-        ...(sizeName === 'large' ? LARGE_IMAGE_SIZE : SMALL_IMAGE_SIZE),
-      })
-      // .toFormat(IMAGE_EXTENSION)
-      .toBuffer()
-  );
+  return sharp(imagePath)
+    .resize({
+      position: 'center',
+      ...(sizeName === 'large' ? LARGE_IMAGE_SIZE : SMALL_IMAGE_SIZE),
+    })
+    .toFormat(IMAGE_EXTENSION)
+    .toBuffer();
 }
 
 /**

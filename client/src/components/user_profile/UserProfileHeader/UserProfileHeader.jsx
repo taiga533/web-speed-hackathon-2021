@@ -3,7 +3,7 @@ import moment from 'moment';
 import React from 'react';
 import SvgCalendarAlt from "../../../../assets/icons/font-awesome/regular/calendar-alt.svg";
 import { getProfileImagePath } from '../../../utils/get_path';
-import { buildDefaultSrc } from '../../../utils/srcSet';
+import { buildDefaultSrc } from '../../../utils/src_set';
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
 /**

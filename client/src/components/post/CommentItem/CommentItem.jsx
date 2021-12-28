@@ -2,7 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getProfileImagePath } from '../../../utils/get_path';
-import { buildDefaultSrc } from '../../../utils/srcSet';
+import { buildDefaultSrc } from '../../../utils/src_set';
 
 
 /**
